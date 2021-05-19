@@ -1,0 +1,3 @@
+@memes.map do |meme|
+ meme = render partial: "meme.json.jb", locals: {meme: meme}
+end

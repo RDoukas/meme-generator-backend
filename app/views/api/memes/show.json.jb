@@ -1,0 +1,7 @@
+meme = render partial: "meme.json.jb", locals: {meme: @meme}
+
+if current_user
+ meme[:owner] = (@meme.user_id == current_user.id)
+end
+
+meme 
