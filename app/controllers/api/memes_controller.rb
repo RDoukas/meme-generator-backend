@@ -29,6 +29,19 @@ class Api::MemesController < ApplicationController
  end
 
  def update
+  @meme = Meme.find_by(id: params[:id])
+
+  @meme.top_text = params[:top_text] || @meme.top_text
+  @meme.bottom_text = params[:bottom_text] || @meme.bottom_text
+  @meme.random_img = params[:random_img] || @meme.random_img
+
+  if @meme.save 
+    render "show.json.jb"
+  else 
+    render json: {message: "you suck"}
+  end
+
+
 
  end
 
