@@ -1,4 +1,6 @@
 class Api::MemesController < ApplicationController
+  # before_action :authenticate_user, except: [:index, :show]
+
   def create
     @meme = Meme.new(
       user_id: current_user.id, 
@@ -21,6 +23,8 @@ class Api::MemesController < ApplicationController
  end
 
  def show
+  @meme = Meme.find_by(id: params[:id])
+  render "show.json.jb"
 
  end
 
@@ -29,6 +33,6 @@ class Api::MemesController < ApplicationController
  end
 
  def delete
-  
+
  end
 end
