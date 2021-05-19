@@ -47,5 +47,13 @@ class Api::MemesController < ApplicationController
 
  def delete
 
+  @meme = Meme.find_by(id: params[:id])
+  @meme.destroy 
+  if @meme.destroy
+    render json: {message: "you deleted your meme"}
+  end
+  
+
+
  end
 end
