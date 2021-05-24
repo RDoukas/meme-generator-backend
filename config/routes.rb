@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
   
-  # EXAMPLE HTML ROUTE
-  # get "/photos" => "photos#index"
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/logged_in', to: 'sessions#is_logged_in?'
+  
+  resources :users, only: [:create, :show, :index]
 
-  # EXAMPLE JSON ROUTE WITH API NAMESPACE
   namespace :api do
-     post "/users" => "users#create"
-     post "/login" => "sessions#create"
-     delete "/logout" => "sessions#destroy"
-     get "/logged_in", to: "sessions#is_logged_in?"
-
 
      post "/memes" => "memes#create"
      get "/memes" => "memes#index"
